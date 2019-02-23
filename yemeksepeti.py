@@ -8,13 +8,13 @@ from  openpyxl import *
 
 
 
-linktxt = open("linkler.txt" , "r")
+linktxt = open("linklerr.txt" , "r")
 linkler = linktxt.readlines() 
 
 
-kitap = Workbook() # excell olustur
+kitap = Workbook() 
 kitap.create_sheet("veriler") 
-yaz = kitap.get_sheet_by_name("veriler")
+yaz = kitap.get_sheet_by_name("veriler") 
 yaz.append(['Bölge','Areaname','CatalogName' , 'CategoryName' , 'ClosedByParent' , 'CuisineNameList', 'DeliveryFee', 'DeliveryTime', 'DisplayName', 'Flavour', 'HasDVDPromotion', 'IsOpen', 'IsRestaurantOpen', 'MainCuisineId', 'MainCuisineLabelName', 'MainCuisineName', 'MinimumDeliveryPrice', 'OpenRestaurantCount', 'PaymentMethodsText', 'PaymentMethodsList', 'Serving', 'Slug', 'Speed', 'WorkHoursText', 'AvgPoint', 'ServingText', 'SpeedText', 'FlavourText', 'AvgRestaurantScore', 'MinimumDeliveryPriceText', 'HasCampusDiscount', 'IsFreezoneRestaurant', 'HasPromotion', 'SuperDelivery']) # sütun adı takım numarası
 
 for i in range(len(linkler)):
@@ -69,7 +69,7 @@ for i in range(len(linkler)):
 		IsFreezoneRestaurant = json["IsFreezoneRestaurant"]
 		HasPromotion = json["HasPromotion"]
 		SuperDelivery = json["SuperDelivery"]
-		yaz.append([adres,Areaname,CatalogName.replace("['" , "") , CategoryName, ClosedByParent ,str(CuisineNameList).strip('[]'), DeliveryFee, DeliveryTime, DisplayName, Flavour, HasDVDPromotion, IsOpen, IsRestaurantOpen, MainCuisineId, MainCuisineLabelName, MainCuisineName, MinimumDeliveryPrice,OpenRestaurantCount, str(PaymentMethodsText).strip('[]'), str(PaymentMethodsList).strip('[]'), Serving, Slug, Speed, WorkHoursText, AvgPoint, ServingText, SpeedText, FlavourText, AvgRestaurantScore, MinimumDeliveryPriceText, HasCampusDiscount, IsFreezoneRestaurant, HasPromotion, SuperDelivery]) # sütun adı takım numarası
-		kitap.save("yemeksepeti.xlsx") # exceli kaydet
-		print("1")
+		yaz.append([adres,Areaname.decode("utf-8") ,str(CatalogName).replace("['" , "") , CategoryName, ClosedByParent ,str(CuisineNameList).strip('[]'), DeliveryFee, DeliveryTime, DisplayName, Flavour, HasDVDPromotion, IsOpen, IsRestaurantOpen, MainCuisineId, MainCuisineLabelName, MainCuisineName, MinimumDeliveryPrice,OpenRestaurantCount, str(PaymentMethodsText).strip('[]'), str(PaymentMethodsList).strip('[]'), Serving, Slug, Speed, WorkHoursText, AvgPoint, ServingText, SpeedText, FlavourText, AvgRestaurantScore, MinimumDeliveryPriceText, HasCampusDiscount, IsFreezoneRestaurant, HasPromotion, SuperDelivery]) # sütun adı takım numarası
+		kitap.save("yemeksepetisson.xlsx") # exceli kaydet
+		print(Areaname.decode("utf-8"))
 kitap.close() #excelli kapat
