@@ -9,14 +9,14 @@ from  openpyxl import *
 
 
 linktxt = open("linkler.txt" , "r")
-linkler = linktxt.readlines() ## türk takımları
+linkler = linktxt.readlines() 
 print(linkler)
 
 
 
 kitap = Workbook() # excell olustur
-kitap.create_sheet("veriler") # excellde bu takım adında bi sheet olustur
-yaz = kitap.get_sheet_by_name("veriler") #  takım adında olusturulan sheete gir
+kitap.create_sheet("veriler")
+yaz = kitap.get_sheet_by_name("veriler") 
 
 
 for i in range(len(linkler)):
